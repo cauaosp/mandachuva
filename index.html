@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Teste API</title>
+    </head>
+    <body>
+        <script>
+            fetch("https://brasilapi.com.br/api/cptec/v1/cidade/fortaleza")
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("Pesquisar dados da cidade região/estado");
+
+                    console.log(data);
+                });
+            fetch("https://brasilapi.com.br/api/cptec/v1/clima/previsao/229")
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("pesquisar dados de clima básico");
+                    console.log(data);
+                });
+            fetch(
+                "https://geocoding-api.open-meteo.com/v1/search?name=Fortaleza&count=1&language=pt&format=json",
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(
+                        "pegar latitude e longitude pelo nome da cidade",
+                    );
+                    console.log(data);
+                });
+            // Latitude e Longitude precisa ser dinâmica e vim depois do fetch de cima do geocoding
+            fetch(
+                "https://api.open-meteo.com/v1/forecast?latitude=-3.71722&longitude=-38.54306&current=temperature_2m",
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("Pesquisar dados de clima mais avançados");
+                    console.log(data);
+                });
+        </script>
+    </body>
+</html>
