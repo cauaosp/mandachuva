@@ -11,6 +11,8 @@ export function useClima(idCidade) {
 
     async function loadData() {
       setLoading(true);
+      setClima(null);
+
       const response = await buscarClima(idCidade);
 
       setClima(response);
@@ -32,11 +34,11 @@ export function useTemperatura(latitude, longitude) {
 
     async function loadData() {
       setLoading(true);
+      setTemperatura(null);
+
       const response = await buscarTemperatura(latitude, longitude);
 
-      const data = await response.json();
-
-      setTemperatura(data);
+      setTemperatura(response);
       setLoading(false);
     }
 

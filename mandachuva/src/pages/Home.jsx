@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { useCidade, useCoordenadas } from "../hooks/cidadeHook";
-import { useClima /**useTemperatura**/ } from "../hooks/climaHook";
+import { useClima, useTemperatura } from "../hooks/climaHook";
 import { CidadeCard } from "../components/CidadeCard";
 
 export function Home() {
   const [input, setInput] = useState("");
   const [buscar, setBuscar] = useState("");
 
-  // const latitude = coordenadas?.results?.[0]?.latitude;
-  // const longitude = coordenadas?.results?.[0]?.longitude;
   const { cidade, loading: loadingCidade } = useCidade(buscar);
   const { coordenadas, loading: loadingCoordenadas } = useCoordenadas(buscar);
   const { clima, loading: loadingClima } = useClima(cidade?.data?.id);
+  const { temperatura, loading: loadingTemperatura } = useTemperatura(
+    coordenadas?.results?.[0]?.latitude,
+    coordenadas?.results?.[0]?.longitude,
+  );
 
-  const loading = loadingCidade || loadingCoordenadas || loadingClima;
+  const loading =
+    loadingCidade || loadingCoordenadas || loadingClima || loadingTemperatura;
 
   return (
     <div className="container grid grid-cols-1 gap-5 mt-10">
@@ -41,13 +44,19 @@ export function Home() {
         </button>
       </div>
 
+      {/* <pre>{JSON.stringify(cidade, null, 2)}</pre>
+      <pre>{JSON.stringify(coordenadas, null, 2)}</pre>
+      <pre>{JSON.stringify(clima, null, 2)}</pre>
+      <pre>{JSON.stringify(temperatura, null, 2)}</pre>*/}
+
       {loading ? (
         <div className="flex justify-center items-center h-screen">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
         </div>
       ) : (
         cidade?.status === 200 &&
-        coordenadas && (
+        coordenadas &&
+        temperatura && (
           <CidadeCard
             cidade={cidade}
             coordenadas={coordenadas ?? null}
@@ -59,6 +68,7 @@ export function Home() {
                   }
                 : null
             }
+            temperatura={temperatura}
           />
         )
       )}

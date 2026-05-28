@@ -16,6 +16,7 @@ export async function buscarTemperatura(latitude, longitude) {
   console.log("buscar temperaturas - ", response.status);
 
   const data = await response.json();
+  console.log("temperaturas:", data);
 
   return data;
 }
