@@ -1,19 +1,56 @@
-export function CidadeCard({ cidade }) {
-  return (
+export function CidadeCard({ cidade, coordenadas, clima }) {
+  return cidade.status != 200 ? (
     <div
       className="
-      border-2
-      w-fit
+    text-justify border-2
     border-red-500
     p-4
-    rounded-xl
-    bg-zinc-900
-    mt-4"
+    rounded-lg
+    mt-4
+    justify-center
+    items-center
+    mx-auto
+    "
     >
-      <h2>{cidade.nome}</h2>
-      <p>{cidade.id}</p>
-      <p>{cidade.estado}</p>
-      <p>{cidade.regiao}</p>
+      Cidade não encontrada
+    </div>
+  ) : (
+    <div
+      className="
+      text-justify border-2
+      border-red-500
+      p-4
+      rounded-lg
+      mt-4
+      mx-auto
+      "
+    >
+      <h2>
+        {cidade.data.nome} ({cidade.data.estado})
+      </h2>
+      <div className="grid grid-cols-2 gap-3">
+        <p>Região: {cidade.data.regiao}</p>
+        <p>
+          População:{" "}
+          {coordenadas?.results?.[0]?.population.toLocaleString("pt-BR")}
+        </p>
+        <p>Latitude: {coordenadas?.results?.[0]?.latitude}</p>
+        <p>Longitude: {coordenadas?.results?.[0]?.longitude}</p>
+        {clima && (
+          <div className="col-span-2 outline outline-green-300 p-1 mb-2 w-full relative grid grid-cols-2 gap-3 rounded-lg">
+            <small className="absolute -bottom-6 right-0">
+              Atualizado em: {clima.atualizado_em}
+            </small>
+            <p>Data: {clima.data}</p>
+            <p>
+              Condição: {clima.condicao_desc} ({clima.condicao})
+            </p>
+            <p>Min: {clima.min}</p>
+            <p>Max: {clima.max}</p>
+            <p>Indíce UV: {clima.indice_uv}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
