@@ -11,7 +11,7 @@ export async function buscarCoordenadas(cidade) {
 
 export async function buscarTemperatura(latitude, longitude) {
   const response = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`,
+    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&timezone=auto`,
   );
   console.log("buscar temperaturas - ", response.status);
 
