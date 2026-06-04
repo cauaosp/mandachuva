@@ -25,9 +25,7 @@ export function StateSearch({ onSelectCity }) {
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
         </div>
       ) : municipios?.status == 200 ? (
-        <>
-          <ListCitys municipios={municipios} onSelectCity={onSelectCity} />
-        </>
+        <ListCitys municipios={municipios} onSelectCity={onSelectCity} />
       ) : (
         <div className="font-bold text-2xl text-red-900 mt-5">
           {municipios?.message}

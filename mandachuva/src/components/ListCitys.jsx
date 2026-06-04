@@ -7,10 +7,12 @@ export function ListCitys({ municipios, onSelectCity }) {
       {municipios?.data?.map((municipio) => (
         <div
           key={municipio.codigo_ibge}
-          className="rounded p-2 shadow-sm cursor-pointer"
+          className="rounded p-2 text-center mx-auto"
           onClick={() => onSelectCity(municipio.nome)}
         >
-          <p className="font-bold">{municipio.nome}</p>
+          <p className="font-bold cursor-pointer shadow-sm w-fit p-3">
+            {municipio.nome}
+          </p>
         </div>
       ))}
     </div>
