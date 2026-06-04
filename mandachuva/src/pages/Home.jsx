@@ -1,77 +1,49 @@
+import { CitySearch } from "./CitySearch";
+import { StateSearch } from "./StateSearch";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../components/ui/tabs";
 import { useState } from "react";
-import { useCidade, useCoordenadas } from "../hooks/cidadeHook";
-import { useClima, useTemperatura } from "../hooks/climaHook";
-import { CidadeCard } from "../components/CidadeCard";
+import { HealthCheck } from "./HealthCheck";
 
 export function Home() {
-  const [input, setInput] = useState("");
-  const [buscar, setBuscar] = useState("");
-
-  const { cidade, loading: loadingCidade } = useCidade(buscar);
-  const { coordenadas, loading: loadingCoordenadas } = useCoordenadas(buscar);
-  const { clima, loading: loadingClima } = useClima(cidade?.data?.id);
-  const { temperatura, loading: loadingTemperatura } = useTemperatura(
-    coordenadas?.results?.[0]?.latitude,
-    coordenadas?.results?.[0]?.longitude,
-  );
-
-  const loading =
-    loadingCidade || loadingCoordenadas || loadingClima || loadingTemperatura;
+  const [selectCity, setSelectCity] = useState("");
+  const [tab, setTab] = useState("cidade");
 
   return (
-    <div className="container grid grid-cols-1 gap-5 mt-10">
-      <h1>Digite o município</h1>
-      <div className="flex justify-center items-center gap-2">
-        <input
-          type="text"
-          placeholder="cidade"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              setBuscar(input);
-            }
+    <Tabs
+      value={tab}
+      onValueChange={setTab}
+      className="border rounded-lg mx-auto max-w-240 w-full my-5 py-5"
+    >
+      <TabsList className="mx-auto columns-3 gap-3 shadow-sm">
+        <TabsTrigger value="cidade" className="uppercase text-sm">
+          cidade
+        </TabsTrigger>
+        <TabsTrigger value="estado" className="uppercase text-sm">
+          estado
+        </TabsTrigger>
+        <TabsTrigger value="health" className="uppercase text-sm">
+          health check
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="cidade">
+        <CitySearch inicialCity={selectCity} />
+      </TabsContent>
+      <TabsContent value="estado">
+        <StateSearch
+          onSelectCity={(city) => {
+            setSelectCity(city);
+            setTab("cidade");
           }}
-          className="border border-2 p-2 rounded-lg"
         />
-        <button
-          className="bg-gray-200 border rounded-lg p-2 font-bold"
-          onClick={() => {
-            setBuscar(input);
-          }}
-        >
-          buscar
-        </button>
-      </div>
-
-      {/* <pre>{JSON.stringify(cidade, null, 2)}</pre>
-      <pre>{JSON.stringify(coordenadas, null, 2)}</pre>
-      <pre>{JSON.stringify(clima, null, 2)}</pre>
-      <pre>{JSON.stringify(temperatura, null, 2)}</pre>*/}
-
-      {loading ? (
-        <div className="flex justify-center items-center h-screen">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
-        </div>
-      ) : (
-        cidade?.status === 200 &&
-        coordenadas &&
-        temperatura && (
-          <CidadeCard
-            cidade={cidade}
-            coordenadas={coordenadas ?? null}
-            clima={
-              clima?.status == 200
-                ? {
-                    atualizado_em: clima.data?.atualizado_em,
-                    ...clima.data?.clima?.[0],
-                  }
-                : null
-            }
-            temperatura={temperatura}
-          />
-        )
-      )}
-    </div>
+      </TabsContent>
+      <TabsContent value="health">
+        <HealthCheck />
+      </TabsContent>
+    </Tabs>
   );
 }

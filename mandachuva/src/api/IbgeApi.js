@@ -4,12 +4,11 @@ export async function buscarCidade(nomeCidade) {
   const response = await fetch(
     `https://brasilapi.com.br/api/cptec/v1/cidade/${nomeCidade}`,
   );
-  console.log("buscar cidade - ", response.status);
 
   if (response.status === 404) {
     return {
       status: 404,
-      message: "Cidade não encontrada",
+      message: "Cidade não encontrada!",
     };
   }
 
@@ -54,4 +53,42 @@ export async function buscarClima(idCidade) {
   const data = await response.json();
 
   return { status: 200, data: data };
+}
+
+export async function buscarEstado(siglaUF) {
+  const response = await fetch(
+    `https://brasilapi.com.br/api/ibge/municipios/v1/${siglaUF}`,
+  );
+
+  if (response.status === 400) {
+    return {
+      status: 400,
+      message: "UF inválida. Informe a sigla com duas letras (A-Z).",
+    };
+  }
+
+  if (response.status === 404) {
+    return {
+      status: 404,
+      message: "UF não encontrada.",
+    };
+  }
+
+  if (response.status === 422) {
+    return {
+      status: 422,
+      message: "Um ou mais providers são inválidos.",
+    };
+  }
+
+  if (!response.ok) {
+    return {
+      status: response.status,
+      message: "Erro na requisição",
+    };
+  }
+
+  const dataJson = await response.json();
+
+  return { status: response.status, data: dataJson };
 }
