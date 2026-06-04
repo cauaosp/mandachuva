@@ -18,7 +18,7 @@ export function CidadeCard({ cidade, coordenadas, clima, temperatura }) {
     <div
       className="
       text-justify border-2
-      border-red-500
+      bg-blue-50 border-blue-100
       p-4
       rounded-lg
       mt-4
@@ -56,7 +56,7 @@ export function CidadeCard({ cidade, coordenadas, clima, temperatura }) {
         </p>
 
         {clima && (
-          <div className="col-span-2 outline outline-green-300 p-1 mb-2 w-full relative grid grid-cols-2 gap-3 rounded-lg">
+          <div className="col-span-2 outline outline-blue-300 p-1 mb-2 w-full relative grid grid-cols-2 gap-3 rounded-lg">
             <small className="absolute -bottom-6 right-0">
               Atualizado em: {clima.atualizado_em}
             </small>

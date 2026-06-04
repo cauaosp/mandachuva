@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { buscarCidade } from "../api/IbgeApi";
+import { buscarCidade, buscarEstado } from "../api/IbgeApi";
 import { buscarCoordenadas } from "../api/OpenMeteoApi";
 
 export function useCidade(nomeCidade) {
@@ -46,4 +46,27 @@ export function useCoordenadas(nomeCidade) {
   }, [nomeCidade]);
 
   return { coordenadas, loading };
+}
+
+export function useMunicipios(siglaUF) {
+  const [municipios, setMunicipios] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!siglaUF) return;
+
+    async function loadData() {
+      setLoading(true);
+      setMunicipios(null);
+
+      const response = await buscarEstado(siglaUF);
+
+      setMunicipios(response);
+      setLoading(false);
+    }
+
+    loadData();
+  }, [siglaUF]);
+
+  return { municipios, loading };
 }
