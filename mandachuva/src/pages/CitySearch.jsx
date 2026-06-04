@@ -56,6 +56,7 @@ export function CitySearch({ inicialCity = "" }) {
           </div>
         )
       )}
+
       {!loading && input != "" && buscar != "" && (
         <div className="bg-blue-100/50 my-5 w-fit mx-auto p-1 rounded-lg inset-shadow-sm">
           <h2>Retorno:</h2>

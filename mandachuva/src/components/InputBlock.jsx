@@ -14,7 +14,10 @@ export function InputBlock({ input, setInput, setBuscar, placeholder }) {
         className="bg-blue-50 border-2 p-2 rounded-lg"
       />
       <button
-        className="bg-blue-50 border-2 rounded-lg p-2 font-bold text-sm"
+        className={
+          "bg-blue-50 border-2 rounded-lg p-2 font-bold text-sm cursor-pointer"
+        }
+        disabled={input.trim() == "" || !input}
         onClick={() => {
           setBuscar(input);
         }}

@@ -12,7 +12,7 @@ export function StateSearch({ onSelectCity }) {
   const loading = loadindMunicipios;
 
   return (
-    <div>
+    <div className="container grid grid-cols-1 gap-5 p-1">
       <h1 className="text-center">Digite o estado</h1>
       <InputBlock
         input={input}
@@ -21,16 +21,17 @@ export function StateSearch({ onSelectCity }) {
         placeholder={"UF"}
       />
       {loading ? (
-        <div className="flex justify-center items-center mt-5">
+        <div className="flex justify-center items-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
         </div>
       ) : municipios?.status == 200 ? (
         <>
-          <h1>teste</h1>
           <ListCitys municipios={municipios} onSelectCity={onSelectCity} />
         </>
       ) : (
-        <div>{municipios?.message}</div>
+        <div className="font-bold text-2xl text-red-900 mt-5">
+          {municipios?.message}
+        </div>
       )}
 
       {!loading && input != "" && buscar != "" && (
