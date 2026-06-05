@@ -8,10 +8,10 @@ N703-Téc de integração de sistemas - API de Agregação de Dados Climáticos 
 - Frontend: Vite + React
 
 Como rodar o projeto:
-
-1) Rode o servidor backend com `npm run server`
-2) Rode os testes com `npm run test:run`
-3) Rode o frontend com `npm run dev`
+1) Instale as dependências com `npm install`
+2) Rode o servidor backend com `npm run server`
+3) Rode os testes com `npm run test:run`
+4) Rode o frontend com `npm run dev`
 
 
 # Organização das Pastas
