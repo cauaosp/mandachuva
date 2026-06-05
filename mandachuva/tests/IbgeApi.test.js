@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { buscarCidade, buscarEstado } from "../api/IbgeApi";
+import { buscarCidade, buscarEstado } from "../src/api/IbgeApi";
 
 describe("Brasil API", () => {
   test("Fortaleza existe", async () => {

@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { buscarCoordenadas, buscarTemperatura } from "../api/OpenMeteoApi";
+import { buscarCoordenadas, buscarTemperatura } from "../src/api/OpenMeteoApi";
 
 describe("Open Meteo", () => {
   test("Busca coordenadas Fortaleza", async () => {
