@@ -2,7 +2,6 @@ import { useHealthCheck } from "../hooks/healthHook";
 
 export function HealthCheck() {
   const health = useHealthCheck();
-  console.log(health);
 
   if (!health) {
     return (

@@ -36,8 +36,6 @@ export function CitySearch({ inicialCity = "" }) {
         <div className="bg-blue-100/50 my-5 w-fit mx-auto p-1 rounded-lg inset-shadow-sm">
           <h2>Retorno:</h2>
           <div className="grid grid-cols-1 gap-4 max-h-96 overflow-y-scroll w-fit mx-auto">
-            {console.log("cidade", cidade)}
-            {console.log("status", cidade?.status)}
             <pre>{JSON.stringify(cidade?.data, null, 2)}</pre>
           </div>
         </div>

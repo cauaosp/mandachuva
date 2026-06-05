@@ -38,8 +38,6 @@ export function StateSearch({ onSelectCity }) {
         <div className="bg-blue-100/50 my-5 w-fit mx-auto p-1 rounded-lg inset-shadow-sm">
           <h2>Retorno: </h2>
           <div className="max-h-96 overflow-y-scroll max-w-150 mx-auto">
-            {console.log("cidade", municipios)}
-            {console.log("status", municipios?.status)}
             <pre>{JSON.stringify(municipios, null, 2)}</pre>
           </div>
         </div>
