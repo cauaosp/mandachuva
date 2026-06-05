@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/api/v1";
+const API_URL = "/api/v1";
 
 export async function buscarClimaCidade(cidade) {
   const response = await fetch(`${API_URL}/clima/${cidade}`);
