@@ -12,7 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "../../dist")));
+const distPath = path.join(__dirname, "../../dist");
+app.use(express.static(distPath));
 
 app.get("/api/v1/health", async (_, res) => {
   try {
@@ -126,7 +127,8 @@ app.use((req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+const HOST = "0.0.0.0";
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Servidor iniciado em http://0.0.0.0:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Servidor iniciado em http://${HOST}:${PORT}`);
 });
