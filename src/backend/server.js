@@ -1,11 +1,19 @@
 import express from "express";
 import cors from "cors";
-
+import path from "path";
+import { fileURLToPath } from "url";
 import { buscarCidade, buscarClima, buscarEstado } from "./brasilApi.js";
-
 import { buscarCoordenadas, buscarTemperatura } from "./openMeteoApi.js";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
+
+app.use(express.static(path.join(__dirname, "../../dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../dist", "index.html"));
+});
 
 app.use(cors());
 app.use(express.json());
@@ -117,8 +125,8 @@ app.get("/api/v1/cidades/:uf", async (req, res) => {
   res.status(200).json(municipios.data);
 });
 
-const PORT = 3000;
+const PORT = import.meta.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Servidor iniciado em http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Servidor iniciado em http://0.0.0.0:${PORT}`);
 });
