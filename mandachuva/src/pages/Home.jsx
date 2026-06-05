@@ -20,13 +20,22 @@ export function Home() {
       className="border rounded-lg mx-auto max-w-240 w-full my-5 py-5"
     >
       <TabsList className="mx-auto columns-3 gap-3 shadow-sm">
-        <TabsTrigger value="cidade" className="uppercase text-sm">
+        <TabsTrigger
+          value="cidade"
+          className="uppercase text-sm cursor-pointer"
+        >
           cidade
         </TabsTrigger>
-        <TabsTrigger value="estado" className="uppercase text-sm">
+        <TabsTrigger
+          value="estado"
+          className="uppercase text-sm cursor-pointer"
+        >
           estado
         </TabsTrigger>
-        <TabsTrigger value="health" className="uppercase text-sm">
+        <TabsTrigger
+          value="health"
+          className="uppercase text-sm cursor-pointer"
+        >
           health check
         </TabsTrigger>
       </TabsList>
