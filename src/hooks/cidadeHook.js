@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { buscarCidade, buscarEstado } from "../api/IbgeApi";
-import { buscarCoordenadas } from "../api/OpenMeteoApi";
+import { buscarClimaCidade, buscarMunicipios } from "../api/backendApi";
 
 export function useCidade(nomeCidade) {
   const [cidade, setCidade] = useState(null);
@@ -11,9 +10,8 @@ export function useCidade(nomeCidade) {
 
     async function loadData() {
       setLoading(true);
-      setCidade(null);
 
-      const response = await buscarCidade(nomeCidade);
+      const response = await buscarClimaCidade(nomeCidade);
 
       setCidade(response);
       setLoading(false);
@@ -25,29 +23,6 @@ export function useCidade(nomeCidade) {
   return { cidade, loading };
 }
 
-export function useCoordenadas(nomeCidade) {
-  const [coordenadas, setCoordenadas] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (!nomeCidade) return;
-
-    async function loadData() {
-      setLoading(true);
-      setCoordenadas(null);
-
-      const response = await buscarCoordenadas(nomeCidade);
-
-      setCoordenadas(response);
-      setLoading(false);
-    }
-
-    loadData();
-  }, [nomeCidade]);
-
-  return { coordenadas, loading };
-}
-
 export function useMunicipios(siglaUF) {
   const [municipios, setMunicipios] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -57,9 +32,8 @@ export function useMunicipios(siglaUF) {
 
     async function loadData() {
       setLoading(true);
-      setMunicipios(null);
 
-      const response = await buscarEstado(siglaUF);
+      const response = await buscarMunicipios(siglaUF);
 
       setMunicipios(response);
       setLoading(false);

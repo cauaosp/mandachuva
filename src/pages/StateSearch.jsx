@@ -7,7 +7,9 @@ export function StateSearch({ onSelectCity }) {
   const [input, setInput] = useState("");
   const [buscar, setBuscar] = useState("");
 
-  const { municipios, loading: loadindMunicipios } = useMunicipios(buscar);
+  const { municipios, loading: loadindMunicipios } = useMunicipios(
+    buscar.toLowerCase().trim(),
+  );
 
   const loading = loadindMunicipios;
 
@@ -28,7 +30,7 @@ export function StateSearch({ onSelectCity }) {
         <ListCitys municipios={municipios} onSelectCity={onSelectCity} />
       ) : (
         <div className="font-bold text-2xl text-red-900 mt-5">
-          {municipios?.message}
+          {municipios?.data?.erro}
         </div>
       )}
 
@@ -36,6 +38,8 @@ export function StateSearch({ onSelectCity }) {
         <div className="bg-blue-100/50 my-5 w-fit mx-auto p-1 rounded-lg inset-shadow-sm">
           <h2>Retorno: </h2>
           <div className="max-h-96 overflow-y-scroll max-w-150 mx-auto">
+            {console.log("cidade", municipios)}
+            {console.log("status", municipios?.status)}
             <pre>{JSON.stringify(municipios, null, 2)}</pre>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { useHealthCheck } from "../hooks/healthHook";
 
 export function HealthCheck() {
   const health = useHealthCheck();
+  console.log(health);
 
   if (!health) {
     return (
@@ -11,26 +12,33 @@ export function HealthCheck() {
     );
   }
 
-  return (
+  return health?.status == 200 ? (
     <div className="grid gap-5 mt-5">
       <p>
-        <span className="font-bold">BrasilAPI:</span>{" "}
-        {health.servicos.brasilapi}
+        <span className="font-bold">Status:</span> {health?.data?.message}
       </p>
 
       <p>
-        <span className="font-bold">Geocoding:</span>{" "}
-        {health.servicos.geocoding}
+        <span className="font-bold">BrasilAPI:</span>{" "}
+        {health?.data.servicos.brasilApi}
       </p>
 
       <p>
         <span className="font-bold">Open-Meteo:</span>{" "}
-        {health.servicos.openmeteo}
+        {health?.data?.servicos?.openMeteo}
       </p>
 
       <p>
         <span className="font-bold">Verificado em:</span>{" "}
-        {new Date(health.timestamp).toLocaleString("pt-BR").replace(",", " - ")}
+        {new Date(health?.data?.timestamp)
+          .toLocaleString("pt-BR")
+          .replace(",", " - ")}
+      </p>
+    </div>
+  ) : (
+    <div className="grid gap-5 mt-5">
+      <p>
+        <span className="font-bold">Status:</span> {health?.data?.message}
       </p>
     </div>
   );
