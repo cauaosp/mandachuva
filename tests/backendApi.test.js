@@ -26,6 +26,14 @@ describe("Backend API", () => {
     expect(data.cidade).toBe("Fortaleza");
   });
 
+  test("Cidade não encontrada retorna 404", async () => {
+    const response = await fetch(`${API_URL}/clima/CidadeInexistente123`);
+    const data = await response.json();
+
+    expect(response.status).toBe(404);
+    expect(data.erro).toBe("Cidade não encontrada");
+  });
+
   test("Clima retorna temperatura", async () => {
     const response = await fetch(`${API_URL}/clima/Fortaleza`);
     const data = await response.json();
