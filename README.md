@@ -1,13 +1,14 @@
 # Mandachuva ☔
-API de Agregação de Dados Climáticos e Geográficos de todo Brasil!
 
-🌐 url pública: https://mandachuva.onrender.com/
+Um site para conferir rapidamente o clima, temperatura, localização e censo populacional de qualquer muncípio do Brasil. Integrandos API’s do IBGE e API’s de meteorologia open-source.
 
 <img width="400" alt="mandachuva" src="https://github.com/user-attachments/assets/6bcb5f46-1667-40b9-aa5f-98fe4eb6a3e2" />
 
+🌐 url pública: https://mandachuva.onrender.com/
+
 ## 🖥️ Stacks do projeto
 
-### Backend:
+💻 Backend:
 
 - Node.js • Express.Js • Vitest
 
