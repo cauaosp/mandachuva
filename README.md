@@ -1,5 +1,5 @@
 # Mandachuva ☔
-API de Agregação de Dados Climáticos e Geográficos de todo Brasil
+API de Agregação de Dados Climáticos e Geográficos de todo Brasil!
 
 🌐 url pública: https://mandachuva.onrender.com/
 
