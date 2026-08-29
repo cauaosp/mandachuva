@@ -1,53 +1,17 @@
-# Mandachuva
-N703-Téc de integração de sistemas - API de Agregação de Dados Climáticos e Geográficos
+# Mandachuva ☔
+API de Agregação de Dados Climáticos e Geográficos de todo Brasil
 
-## Arquitetura web
+🌐 url pública: https://mandachuva.onrender.com/
 
-- Backend: Node.js com Express
-- Testes: Vitest
-- Frontend: Vite + React
+<img width="400" alt="mandachuva" src="https://github.com/user-attachments/assets/6bcb5f46-1667-40b9-aa5f-98fe4eb6a3e2" />
 
-## Como rodar o projeto:
+## 🖥️ Stacks do projeto
+
+- Backend: Node.js • Express.Js • Vitest
+- Frontend: Vite • React
+
+## 📦 Como rodar:
 1) Instale as dependências com `npm install`
 2) Rode o servidor backend com `npm run server`
 3) Rode os testes com `npm run test:run`
 4) Rode o frontend com `npm run dev`
-
-
-## Organização das Pastas
-```
-.
-├── components.json
-├── docs
-│   └── MandaChuva.postman_collection.json
-├── eslint.config.js
-├── index.html
-├── INTEGRANTES.md
-├── package.json
-├── package-lock.json
-├── public
-│   ├── favicon.svg
-│   └── icons.svg
-├── README.md
-├── src
-|    ├── backend
-|     ├── brasilApi.js
-|     ├── openMeteoApi.js
-|     └── server.js
-│   ├── api
-│   ├── App.css
-│   ├── App.jsx
-│   ├── assets
-│   ├── components
-│   ├── hooks
-│   ├── index.css
-│   ├── lib
-│   ├── main.jsx
-│   └── pages
-├── tests
-│   └── backendApi.test.js
-├── tsconfig.json
-└── vite.config.js
-
-12 directories, 20 files
-```
