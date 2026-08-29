@@ -7,11 +7,17 @@ API de Agregação de Dados Climáticos e Geográficos de todo Brasil!
 
 ## 🖥️ Stacks do projeto
 
-- Backend: Node.js • Express.Js • Vitest
-- Frontend: Vite • React
+### Backend:
+
+- Node.js • Express.Js • Vitest
+
+### Frontend:
+
+- Vite • React
 
 ## 📦 Como rodar:
-1) Instale as dependências com `npm install`
-2) Rode o servidor backend com `npm run server`
-3) Rode os testes com `npm run test:run`
-4) Rode o frontend com `npm run dev`
+1) Clone o projeto
+2) Instale as dependências com `npm install`
+3) Rode o servidor backend com `npm run server`
+4) Rode os testes com `npm run test:run`
+5) Rode o frontend com `npm run dev`
