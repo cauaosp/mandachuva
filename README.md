@@ -22,3 +22,5 @@ Um site para conferir rapidamente o clima, temperatura, localização e censo po
 3) Rode o servidor backend com `npm run server`
 4) Rode os testes com `npm run test:run`
 5) Rode o frontend com `npm run dev`
+
+###### ☸️ Desenvolvido por [Cauã Paiva](https://github.com/cauaosp)
